@@ -11,6 +11,8 @@ public class PacketManager {
 	
 	private HashMap<String, PacketBase> Packets = new HashMap<String, PacketBase>();
 	public PacketManager() {}
+	
+	// searches for Packets and adds them
 	public void Initialize() {
 		for(@SuppressWarnings("rawtypes") Class c : GSocket.LoadPackages("de.GSocket.PacketManager.Packets")) {
 			try {
@@ -26,6 +28,7 @@ public class PacketManager {
 		GSocket.Log.info("Adding Packet " + Packet.getClass().getSimpleName());
 	}
 	
+	// Handles incoming packets and checks if any data has been lost!
 	public void HandlePacket(String JSON) {
 		if(isPacket(JSON)) {
 			Packet Packet = new Packet(JSON);
