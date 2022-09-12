@@ -1,5 +1,8 @@
 # Lua GSocket API
 
+<br>
+<br>
+
 ## GSocket.Connect((String) IP, (Integer) Port)
 if no IP is provided it will use localhost!    
 if no Port is provided it will use the default 5000 Port!   
@@ -7,6 +10,9 @@ if no Port is provided it will use the default 5000 Port!
 ## GSocket.SendPacket((String) Packet, (Table) Body)
 if no Packet is provided it throw an Error!  
 if no Body is provided it will send an Empty Packet!
+
+<br>
+<br>
 
 # Internal API
 
