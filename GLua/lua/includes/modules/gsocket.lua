@@ -1,17 +1,23 @@
 require "socket"
 
-GSocket = {}
-local udp
-function GSocket.Connect(IP, Port)
-	IP = IP or "localhost"
-	Port = Port or 5000
+GSocket = {
+	["IP"] = "localhost",
+	["Port"] = 5000
+}
 
-	udp = socket.udp()
+function GSocket.Connect(IP, Port)
+	IP = IP or GSocket.IP
+	Port = Port or GSocket.Port
+
+	local udp = socket.udp()
 	udp:settimeout(0)
 	udp:setpeername(IP, Port)
 	if !udp then
 		error("failed to create a GSocket with targeted host")
 	end
+	GSocket.IP = IP
+	GSocket.Port = Port
+	GSocket.Socket = udp
 end
 
 function GSocket.CreateHeader(Type, Body)
@@ -24,13 +30,17 @@ end
 function GSocket.SendPacket(Packet, Body)
 	Body = Body or {}
 	Body = util.TableToJSON(Body)
+	if !Packet then
+		error("no packet name was provided")
+	end
+
 	local packet = {
 		["Header"] = GSocket.CreateHeader(Packet, Body),
 		["Body"] = Body
 	}
 
-	if !udp then
+	if !GSocket.Socket then
 		error("attempted to send a packet using a nil GSocket")
 	end
-	udp:send(util.TableToJSON(packet))
+	GSocket.Socket:send(util.TableToJSON(packet))
 end
