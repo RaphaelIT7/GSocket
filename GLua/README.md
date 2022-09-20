@@ -1,12 +1,17 @@
-# Lua GSocket API  
+# GLua  
 This Lua implementation isn't able to receive packages!  
 
-### Public:  
-	GSocket.Connect((String) IP, (Integer) Port)  
-	GSocket.SendPacket((String) Packet, (Table) Body)  
-	
-	### (internal)  
-	GSocket.CreateHeader((String)Type, (JSONString) Body)  
+| Function                                              | Internally Used |
+| ----------------------------------------------------- | --------------- |
+| GSocket.Connect((String) IP, (Integer) Port)          | No              |
+| GSocket.SendPacket((String) Packet, (Table) Body)     | No              |
+| GSocket.CreateHeader((String)Type, (JSONString) Body) | Yes             |
+
+| Setting        | Type    | Default     |
+| -------------- | ------- | ----------- |
+| GSocket.IP     | String  | "localhost" |
+| GSocket.Port   | Integer | 5000        |
+| GSocket.Socket | Socket  | nil         |
 <br>
 <br>
 
@@ -23,13 +28,9 @@ if no Type is provided it will return an Header with no Destination!
 if no Body is provided the Java PacketManager will throw an warning and won't Handle the Packet properly!  
 
 it returns a table like this:
-```
+```lua
  {
   ["Type"] = "Example", -- Packet Type
   ["Length"] = 10 -- Body length
  }
 ```
-
-## (UDP Socket) GSocket.Socket  
-## (String) GSocket.IP  
-## (Integer) GSocket.Port  

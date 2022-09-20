@@ -1,48 +1,48 @@
 # Packet  
-### Public:  
-	Packet.GetHeader()  
-	Packet.GetBody()  
-	Packet.GetBodyRaw()  
-	Packet.GetPacketRaw()  
-	Packet.GetSenderAddress()  
-	Packet.GetSenderPort()  
+| Function                  | Internally Used |
+| ------------------------- | --------------- | 
+| Packet.GetHeader()        | No              |
+| Packet.GetBody()          | No              |
+| Packet.GetBodyRaw()       | No              |
+| Packet.GetPacketRaw()     | No              |
+| Packet.GetSenderAddress() | No              |
+| Packet.GetSenderPort()    | No              |
 	
 
 ## Packet((String) JSON, InetAddress SenderAddress, Integer SenderPort)  
 
 ## Packet.GetHeader()  
 returns the packet header  
-returns:  
-	PacketHeader (de.GSocket.Objects.PacketHeader)  
+| Returns      |
+| ------------ |
+| PacketHeader |
 
 ## Packet.GetBody()  
 returns the JSONOBject created from the body  
-retuns:  
-	JSONObject  
+| Returns    |
+| ---------- |
+| JSONObject |
 
 ## Packet.GetBodyRaw()  
 returns the raw body string  
-retuns:  
-	String (a JSON String)  
+| Returns     |
+| ----------- |
+| JSON String |
 
 ## Packet.GetPacketRaw()  
 returns the raw packet string  
-retuns:  
-	String (a JSON String)  
-
-structure:  
-	Header:  
-		Type: Example  
-		Length: (Body Length)  
-	Body:  
-
+| Returns     |
+| ----------- |
+| JSON String |
 
 ## Packet.GetSenderAddress()  
 returns the InetAddress from the socket the packet has been received with.  
-returns:  
-	InetAddress  
+| Returns     |
+| ----------- |
+| InetAddress |
 
 ## Packet.GetSenderPort()  
 returns the Port from the socket the packet has been received with.  
-returns:  
-	(Integer) Port  
+| Returns |
+| ------- |
+| Integer |

@@ -1,16 +1,19 @@
 # GSocket  
-### Public:  
-	GSocket.Initialize()  
+| Function                               | Internally Used |
+| -------------------------------------- | --------------- | 
+| GSocket.Initialize()                   | No              |
+| GSocket.LoadPackages((String) Package) | Yes             |
 
-	### (internal)
-	GSocket.LoadPackages((String) Package)  
+| Setting      | Type    | Default     |
+| ------------ | ------- | ----------- |
+| GSocket.IP   | String  | "localhost" |
+| GSocket.Port | Integer | 5000        |
 
 ## GSocket.LoadPackages((String) Package) (internally used)  
 returns a Set of classes which have been found in the targeted package  
-returns	:  
-	Set<Class>  
+| Returns      |
+| ------------ |
+| Set< Class > |
 
 ## GSocket.Initialize()  
-
-## (String) GSocket.IP  (default "localhost")  
-## (Integer) GSocket.Port  (default 5000)  
+Initializes and creates a udp server  

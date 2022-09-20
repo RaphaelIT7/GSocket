@@ -1,13 +1,12 @@
 # PacketManager  
-### Public:  
-	PacketManager.Connect(InetAddress IP, Integer Port)  
-	PacketManager.SendPacket(String Type, JSONObject JSON)  
-	PacketManager.isPacket(String JSON)  
-
-	### (internal)  
-	PacketManager.Initialite()  
-	PacketManager.AddPacket(PacketBase Packet)  
-	PacketManager.HandlePacket(String JSON, DatagramPacket income)  
+| Function                                                       | Internally Used |
+| -------------------------------------------------------------- | --------------- | 
+| PacketManager.Connect(InetAddress IP, Integer Port)            | No              |
+| PacketManager.SendPacket(String Type, JSONObject JSON)         | No              |
+| PacketManager.isPacket(String JSON)                            | No              |
+| PacketManager.Initialite()                                     | Yes             |
+| PacketManager.AddPacket(PacketBase Packet)                     | Yes             |
+| PacketManager.HandlePacket(String JSON, DatagramPacket income) | Yes             |
 
 ## PacketManager.Initialite() (internally used)  
 called by the GSocket when it Initializes  
