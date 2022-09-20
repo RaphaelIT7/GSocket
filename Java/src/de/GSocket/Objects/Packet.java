@@ -1,7 +1,11 @@
 package de.GSocket.Objects;
 
+import java.net.InetAddress;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import de.GSocket.GSocket;
 
 public class Packet {
 	
@@ -9,15 +13,23 @@ public class Packet {
 	private static JSONObject Body;
 	private static String BodyRaw;
 	private static String PacketRaw;
-	public Packet(String JSON) {
+	private InetAddress SenderAddress;
+	private Integer SenderPort;
+	public Packet(String JSON, InetAddress SenderAddress, Integer SenderPort) {
+		this.SenderAddress = SenderAddress;
+		this.SenderPort = SenderPort;
+		JSONObject packet = new JSONObject(JSON);
 	    try {
-	        JSONObject packet = new JSONObject(JSON);
 	        Header = new PacketHeader(this, packet.getJSONObject("Header"));
-	        Body = new JSONObject(this, packet.getString("Body"));
+	    } catch (JSONException e) {
+	    	GSocket.Log.warning("Invalid Packet header received! \n" + JSON);
+	    }
+	    try {
+	        Body = new JSONObject(packet.getString("Body"));
 	        BodyRaw = packet.getString("Body");
 	        PacketRaw = JSON;
 	    } catch (JSONException e) {
-	    	e.printStackTrace();
+	    	GSocket.Log.warning("Invalid Packet body received! \n" + JSON);
 	    }
 	}
 	
@@ -35,5 +47,13 @@ public class Packet {
 	
 	public String GetPacketRaw() {
 		return PacketRaw;
+	}
+	
+	public InetAddress GetSenderAddress() {
+		return SenderAddress;
+	}
+	
+	public Integer GetSenderPort() {
+		return SenderPort;
 	}
 }

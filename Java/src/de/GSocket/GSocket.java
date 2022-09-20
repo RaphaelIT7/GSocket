@@ -13,10 +13,10 @@ import de.GSocket.PacketManager.PacketManager;
 
 public class GSocket {
 	
-	private static String IP;
-	private static Integer Port = 5000;
+	public static String IP = "localhost";
+	public static Integer Port = 5000;
 	private static boolean Secure = true;
-	private static PacketManager PacketManager;
+	public static PacketManager PacketManager;
 	public static Logger Log;
 	public static void main(String[] args) {
 		Log = Logger.getLogger("GSocket");
@@ -49,36 +49,34 @@ public class GSocket {
 		}
 	}
 	
-		
 	private static DatagramSocket server;
-	private static DatagramPacket incomingPacket;
 	public static void Initialize() {
 		PacketManager.Initialize();
-			
+	
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
 				try {
-			        server = new DatagramSocket(Port);
+					server = new DatagramSocket(Port);
 			        byte[] incomingBytes = new byte[8192];
-			        Log.info("Server Started on IP " + server.getLocalSocketAddress());
-			        Log.info("Server Started on Port " + Port);
+			        Log.info("Server is listening on ip " + server.getLocalSocketAddress());
+			        Log.info("Server is listening on port " + Port);
 			        if(Secure) {
 			        	Log.info("Server accepts packages from IP " + IP);
 			        } else {
 			        	Log.warning("Server accepts all packages!");
 			        }
-				
+					
 					while(true) {
-						incomingPacket = new DatagramPacket(incomingBytes, incomingBytes.length);
+						DatagramPacket incomingPacket = new DatagramPacket(incomingBytes, incomingBytes.length);
 					    server.receive(incomingPacket);
 					    String received = new String(incomingBytes,0 , incomingPacket.getLength());
 					    if(Secure) {
 					    	if(incomingPacket.getAddress().getHostAddress().equals(IP)) {
-					    		PacketManager.HandlePacket(received);
+					    		PacketManager.HandlePacket(received, incomingPacket);
 					    	}
 					    } else {
-					    	PacketManager.HandlePacket(received);
+					    	PacketManager.HandlePacket(received, incomingPacket);
 					    }
 					}
 				} catch(Exception e) {
