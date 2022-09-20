@@ -1,4 +1,5 @@
 # Lua GSocket API
+This Lua implementation isn't able to receive packages!
 
 <br>
 <br>
