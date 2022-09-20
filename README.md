@@ -4,3 +4,4 @@
 ## Current Compatible with:  
   Garry's Mod (needed dll file https://github.com/danielga/gmod_luasocket).  
   Java
+  Python
