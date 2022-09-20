@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GSocket", "GSocket\GSocket.csproj", "{ADEB51C4-98DD-444E-B47D-485C2CEAE498}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADEB51C4-98DD-444E-B47D-485C2CEAE498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADEB51C4-98DD-444E-B47D-485C2CEAE498}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADEB51C4-98DD-444E-B47D-485C2CEAE498}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADEB51C4-98DD-444E-B47D-485C2CEAE498}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {520DB1BA-DF59-4FBE-BD84-7448EC471007}
+	EndGlobalSection
+EndGlobal
