@@ -37,7 +37,7 @@ public class PacketManager {
 	public void HandlePacket(String JSON, DatagramPacket income) {
 		if(isPacket(JSON)) {
 			Packet Packet = new Packet(JSON, income.getAddress(), income.getPort());
-			if(Packet.GetHeader().GetLength() != Packet.GetBodyRaw().length()) {
+			if(!Packet.IsValid() || Packet.GetHeader().GetLength() != Packet.GetBodyRaw().length()) {
 				GSocket.Log.warning("Recieved Packet has lost Data!");
 			} else {
 				if(Packets.containsKey(Packet.GetHeader().GetType())) {
@@ -89,11 +89,12 @@ public class PacketManager {
 	}
 	
 	public boolean isPacket(String JSON) {
-		boolean packet = false;
 		try {
 			new JSONObject(JSON);
-			return !packet;
-		} catch(Exception e) {}
-		return packet;
+			return true;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }
