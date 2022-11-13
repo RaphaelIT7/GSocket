@@ -19,6 +19,9 @@ def Listen():
 		try:
 			data = json.loads(data.decode('utf-8'))
 			Header = json.loads(data["Header"])
+			if not data["Body"] or not Header:
+				continue
+
 			if len(data["Body"]) != Header["Length"]:
 				print("Packet data has been lost!")
 
